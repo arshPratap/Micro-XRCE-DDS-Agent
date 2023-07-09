@@ -142,6 +142,8 @@ bool eprosima::uxr::xmlobjects::parse_replier(
             if (profile->getType() == NodeType::REPLIER)
             {
                 replier = *(dynamic_cast<DataNode<ReplierAttributes>*>(profile.get())->get());
+                replier.publisher.historyMemoryPolicy = fastrtps::rtps::MemoryManagementPolicy::PREALLOCATED_WITH_REALLOC_MEMORY_MODE;
+                replier.subscriber.historyMemoryPolicy = fastrtps::rtps::MemoryManagementPolicy::PREALLOCATED_WITH_REALLOC_MEMORY_MODE;
                 ret   = true;
             }
         }
